@@ -1,0 +1,76 @@
+body{
+    background-image: url("images/background.jpg");
+    background-size: cover;
+    color : white;
+    font-family: Century Gothic;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    height: 350px;
+    width: 300px;
+}
+
+input[type = "submit"], #searchbutton{
+    background-color: black;
+    border-radius: 3px;
+    border-color: black;
+    color: white;
+    font-family: Century Gothic;
+}
+
+.post_title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.thumbnail {
+    height: 250px;
+    width: 250px;
+}
+
+#header {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 20px;
+}
+
+#searchfield {
+    height: 30px;
+    width: 700px;
+    border-radius: 3px;
+    border-color: black;
+    font-family: Century Gothic;
+}
+
+#searchbutton {
+    height: 30px;
+    width: 80px;
+    position: relative;
+    left: -15px;
+    top: 1px;
+}
+
+#gridbox {
+    display: inline-grid;
+    grid-template-columns: repeat(3, 400px);
+    grid-gap: 10px 10px;
+}
+
+#home {
+    font-size: 45px;
+}
+
+#home:hover {
+    text-decoration: none;
+}

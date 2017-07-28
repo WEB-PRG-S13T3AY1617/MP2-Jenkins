@@ -1,0 +1,45 @@
+body{
+    background-image: url("images/background.jpg");
+    background-size: cover;
+    color : white;
+    font-family: Century Gothic;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    height: 350px;
+    width: 300px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.post_title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.thumbnail {
+    height: 250px;
+    width: 250px;
+}
+
+#gridbox {
+    display: inline-grid;
+    grid-template-columns: repeat(3, 400px);
+    grid-gap: 15px 20px;
+}
+
+#home:hover {
+    text-decoration: none;
+}
