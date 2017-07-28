@@ -13,5 +13,6 @@ urlpatterns = [
     url(r'^addpost/psubmit/$', views.psubmit, name = 'psubmit'),
     url(r'^(?P<post_id>[0-9]+)/$', views.postdetail, name = 'postdetail'),
     url(r'^(?P<user_username>[\w]+)/$', views.userdetail, name = 'userdetail'),
+    url(r'^(?P<post_tags>[\w]+)/$', views.filtertags, name = 'filtertags'),
     url(r'^(?P<user_username>[\w]+)/allposts/$', views.userdetail, name = 'userdetail')
 ]

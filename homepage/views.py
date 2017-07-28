@@ -99,12 +99,13 @@ def lsubmit(request):
 
     #return HttpResponse('LOGIN Success! Hello ' + request.session["username"] + '!!!')
 
+def filtertags(request, post_tags):
+    request.session["post_tags"]= post_tags
+    all_posts = Post.objects.all()
+    context = {'all_posts': all_posts}
 
+    return render(request, 'homepage/filtertags.html', {'all_posts': all_posts})
         
-
-
-
-
 
 def postnew(request):
     
