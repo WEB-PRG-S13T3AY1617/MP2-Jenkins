@@ -14,9 +14,20 @@ def index(request):
         context = {'all_posts': all_posts}
         return render(request, 'homepage/index.html', {'all_posts': all_posts})
     except :
+        request.session["username"] = " "
         all_posts = Post.objects.all()
         context = {'all_posts': all_posts}
         return render(request, 'homepage/index.html', {'all_posts': all_posts})
+
+
+def search(request):
+
+        request.session["search"]=request.POST['search']
+        all_posts = Post.objects.all()
+        context = {'all_posts': all_posts}
+
+        return render(request, 'homepage/search.html', {'all_posts': all_posts})
+
 
 
 def postdetail(request, post_id):
@@ -46,6 +57,7 @@ def submit(request):
     newuser.name=request.POST['name']
     newuser.username=request.POST['username']
     newuser.password=request.POST['password']
+    newuser.dpo=request.POST['dpo']
     newuser.save()
 
     all_posts = Post.objects.all()
@@ -99,19 +111,26 @@ def postnew(request):
     return render(request, 'homepage/addpost.html')
 
 def psubmit(request):
-    tempuser = User.objects.get(username=request.session['username'])
-    newpost = Post()
-    newpost.ownername = tempuser
-    newpost.itemname = request.POST['itemname']
-    #newpost.thumbnail = request.POST['thumbnail']
-    newpost.tags = request.POST['tags']
+    try:
+        tempuser = User.objects.get(username=request.session['username'])
+        newpost = Post()
+        newpost.ownername = tempuser
+        newpost.itemname = request.POST['itemname']
+        #newpost.thumbnail = request.POST['thumbnail']
+        newpost.quantity = request.POST['quantity']
+        newpost.condition = request.POST['condition']
+        newpost.itemtype = request.POST['itemtype']
+        newpost.tags = request.POST['tags']
 
-    newpost.save()
-    all_posts = Post.objects.all()
-    context = {'all_posts': all_posts}
-    return render(request, 'homepage/index.html', {'all_posts': all_posts})
-
+        newpost.save()
+        all_posts = Post.objects.all()
+        context = {'all_posts': all_posts}
+        return render(request, 'homepage/index.html', {'all_posts': all_posts})
+    except :
+        return render(request, 'homepage/addpost.html')
 
 def logout(request):
     del request.session['username']
-    return HttpResponse('you have logged out')
+    all_posts = Post.objects.all()
+    context = {'all_posts': all_posts}
+    return render(request, 'homepage/index.html', {'all_posts': all_posts})

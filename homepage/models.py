@@ -5,7 +5,7 @@ class User(models.Model):
     name = models.CharField(max_length = 200)
     username = models.CharField(max_length = 100)
     password = models.CharField(max_length = 50)
-    
+    dpo = models.CharField(max_length = 20, default="default")
     #student or staff
     #degree programs or offices
     
@@ -25,7 +25,7 @@ class Post(models.Model):
     tags = models.CharField(max_length = 500)
     quantity = models.PositiveIntegerField(default = 0)
     condition = models.CharField(max_length = 200)
-    #itemtype = models.CharField(max_length = 1)
+    itemtype = models.CharField(max_length = 10, default = "default")
     #academic or office
     #course name if academic
 
