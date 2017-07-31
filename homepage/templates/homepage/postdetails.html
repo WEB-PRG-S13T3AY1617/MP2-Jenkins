@@ -1,0 +1,29 @@
+{% load staticfiles%}
+<link rel="stylesheet" type="text/css" href="{% static 'homepage/style.css'%}"/>
+
+<div id = "header">
+    <form action="{% url 'search' %}" method="POST">  <!--add search function here-->
+        {% csrf_token %}
+        <input id = "searchfield" type ="text" name ="search" value="Search...">
+        <input id = "searchbutton" type="submit" value="Search">
+    </form>
+    <div>
+        <a href = "/homepage/register/">Register</a> | <a href = "/homepage/login/">Login</a> | <a href = "/homepage/addpost/">Add Post</a> | <a href = "/homepage/logout/">Log Out</a> <br>
+        <!-- <a href = "/homepage/addpost/">Add a new post!</a> -->
+    </div>
+</div>
+
+<h1><a id = "home" href = "/homepage/">NEW BEGINNINGS MARKETPLACE</a></h1>
+
+<h2>{{ post.itemname }}</h2>
+posted by <a href = "/homepage/{{ post.ownername }}/">{{ post.ownername }}</a>
+<br><br>
+<img src = "{{ post.thumbnail }}">
+<br>
+Quantity: {{ post.quantity }}
+<br>
+Item Type: {{ post.itemtype }}
+<br>
+Condition: {{ post.condition }}
+<br>
+Tags: {{ post.tags }}

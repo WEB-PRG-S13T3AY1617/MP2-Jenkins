@@ -1,0 +1,19 @@
+{% load staticfiles%}
+<link rel="stylesheet" type="text/css" href="{% static 'homepage/style.css'%}"/>
+
+<h1><a id = "home" href = "/homepage/">NEW BEGINNINGS MARKETPLACE</a></h1>
+<h2>{{ user.name }}</h2>
+
+<div id = "gridbox">
+    {% if user %}    
+        {% for post in user.post_set.all %}
+            <div>
+                <a href = "/homepage/{{ post.id }}/">{{ post.itemname }}</a>
+                <br>
+                <a href = "/homepage/{{ post.id }}/"><img class = "thumbnail" src = "{{ post.thumbnail }}"></a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h3>No posts to display!</h3>
+    {% endif %}
+</div>
